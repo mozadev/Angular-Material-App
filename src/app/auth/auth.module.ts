@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../material/material.module';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
@@ -18,6 +19,7 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
+    MaterialModule,
 
   ]
 })
