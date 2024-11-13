@@ -1,12 +1,72 @@
-<h1>Listado de Anexos</h1>
+<h1>Listado de Anexos MINPU</h1>
 <mat-divider></mat-divider>
 
 <div class="total-section">
   <div class="total-card">
-    <img src="../../../../assets/claro.png" height="150px" width="150px" alt="Claro" class="logo" />
+    <img src="../../../../assets/claro.png" alt="Claro" class="logo" />
+    <p>Anexos en UP inicialmente</p>
+    <h2>Total: {{ count }}</h2>
+  </div>
+
+  <div class="summary-card">
+    <h2>Resumen de Anexos Actualmente</h2>
+    <p>UP: {{ up }} – {{ upRate }}%</p>
+    <p>DOWN: {{ dow }} – {{ dowRate }}%</p>
+  </div>
+</div>
+
+<table mat-table [dataSource]="anexos" class="mat-elevation-z8 style-table">
+  <ng-container matColumnDef="key">
+    <th mat-header-cell *matHeaderCellDef>Key</th>
+    <td mat-cell *matCellDef="let anexo">{{ anexo.key__key }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="anexo">
+    <th mat-header-cell *matHeaderCellDef>Anexo</th>
+    <td mat-cell *matCellDef="let anexo">{{ anexo.key__anexo }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="duration">
+    <th mat-header-cell *matHeaderCellDef>Duracion de la Caída</th>
+    <td mat-cell *matCellDef="let anexo">{{ anexo.duration_hrs }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="registro">
+    <th mat-header-cell *matHeaderCellDef>Registro</th>
+    <td mat-cell *matCellDef="let anexo">{{ anexo.registro | date: 'dd MMM yyyy, HH:mm' }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="details">
+    <th mat-header-cell *matHeaderCellDef>Detalles</th>
+    <td mat-cell *matCellDef="let anexo">
+      <button mat-raised-button color="primary" (click)="openDetailDialog(anexo.key__key)">
+        Ver {{ anexo.key__key }}
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+
+
+
+
+<!-- <h1>Listado de Anexos</h1>
+<mat-divider></mat-divider>
+
+<div class="total-section">
+  <div class="total-card">
+    <img src="../../../../assets/claro.png"   alt="Claro" class="logo" />
+
     <h2> Total: {{anexos.length}}</h2>
     <p> Anexos en UP actualmente</p>
   </div>
+
+
 
   <div class="summary-card">
     <h2>Resumen de Anexos Actualmente</h2>
@@ -39,7 +99,7 @@
   <ng-container matColumnDef="details">
     <th mat-header-cell *matHeaderCellDef>Detalles</th>
     <td mat-cell *matCellDef="let anexo">
-      <button mat-raised-button color="primary" (click)="openDetailDialog(anexo)">
+      <button mat-raised-button color="primary" (click)="openDetailDialog(anexo.key__key)">
         Ver {{anexo.key__key}}
       </button>
     </td>
@@ -51,7 +111,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 
-</table>
+</table> -->
 
 
 
@@ -69,31 +129,4 @@
 
 
 
-<!-- <ul>
-  <li *ngFor="let anexo of anexos">
-    {{ anexo.key__key}}
-  </li>
-</ul> -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <h1>Listado de Anexos</h1>
-<mat-divider></mat-divider>
-
-<div class="grid mb-8">
-
-  <div *ngFor="let anexo of anexos"
-  class="col-12 sm:col-4 md:col-3 xl:col-2 ">
-    <anexos-anexo-card [anexo]="anexo"></anexos-anexo-card> 
-  </div>
-</div> -->
